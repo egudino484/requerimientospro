@@ -7,20 +7,21 @@ package com.uisrael.proyecto_clases.controlador.controlador;
 
 import com.requerimientos.requerimientospro.entidades.Cliente;
 import com.requerimientos.requerimientospro.entidades.Orden;
+import com.requerimientos.requerimientospro.entidades.Requerimiento;
 import java.util.List;
 
 /**
  *
  * @author fernanda
  */
-public interface IOrdenControlador {
+public interface IRequerimientoControlador {
 
-    public void insert(Orden cliente) throws Exception;
+    public void insert(Requerimiento objeto) throws Exception;
 
     public List<Orden> findByid(int cod) throws Exception;
 
     public boolean delete() throws Exception;
 
-    public boolean update(Orden cliente) throws Exception;
+    public boolean update(Requerimiento objeto) throws Exception;
 
 }

@@ -1,9 +1,13 @@
+com\uisrael\proyecto_clases\controlador\controladorImpl\OrdenControlerImpl.class
+com\uisrael\proyecto_clases\controlador\controlador\IOrdenControlador.class
 com\requerimientos\requerimientospro\entidades\Requerimiento.class
 com\uisrael\proyecto_clases\modelo\DAOImpl\ClienteDAOImpl.class
 app\ClienteManagedBean.class
+com\uisrael\proyecto_clases\modelo\DAO\IOrdenDAO.class
 com\requerimientos\requerimientospro\entidades\Cliente_.class
 com\uisrael\proyecto_clases\controlador\controladorImpl\ClienteControlerImpl.class
 com\requerimientos\requerimientospro\controladores\exceptions\NonexistentEntityException.class
+com\uisrael\proyecto_clases\backingBeans\OrdenView.class
 com\requerimientos\requerimientospro\entidades\Usuario.class
 com\requerimientos\requerimientospro\entidades\Ciudad.class
 com\requerimientos\requerimientospro\entidades\Cliente.class
@@ -17,8 +21,8 @@ com\requerimientos\requerimientospro\entidades\Orden_.class
 com\requerimientos\requerimientospro\controladores\exceptions\IllegalOrphanException.class
 com\requerimientos\requerimientospro\entidades\Requerimiento_.class
 com\uisrael\proyecto_clases\modelo\DAOImpl\GenericDAOImpl.class
-app\Aplicativo.class
 com\uisrael\proyecto_clases\backingBeans\ClienteView.class
+com\uisrael\proyecto_clases\modelo\DAOImpl\OrdenDAOImpl.class
 com\requerimientos\requerimientospro\entidades\Orden.class
 com\uisrael\proyecto_clases\modelo\DAO\IGenericDAO.class
 com\requerimientos\requerimientospro\controladores\exceptions\RollbackFailureException.class

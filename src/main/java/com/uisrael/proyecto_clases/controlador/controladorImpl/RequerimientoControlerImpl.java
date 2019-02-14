@@ -7,25 +7,29 @@ package com.uisrael.proyecto_clases.controlador.controladorImpl;
 
 import com.requerimientos.requerimientospro.entidades.Cliente;
 import com.requerimientos.requerimientospro.entidades.Orden;
+import com.requerimientos.requerimientospro.entidades.Requerimiento;
 import com.uisrael.proyecto_clases.controlador.controlador.IClienteControlador;
 import com.uisrael.proyecto_clases.controlador.controlador.IOrdenControlador;
+import com.uisrael.proyecto_clases.controlador.controlador.IRequerimientoControlador;
 import com.uisrael.proyecto_clases.modelo.DAO.IClienteDAO;
 import com.uisrael.proyecto_clases.modelo.DAO.IOrdenDAO;
+import com.uisrael.proyecto_clases.modelo.DAO.IRequerimientoDAO;
 import com.uisrael.proyecto_clases.modelo.DAOImpl.ClienteDAOImpl;
 import com.uisrael.proyecto_clases.modelo.DAOImpl.OrdenDAOImpl;
+import com.uisrael.proyecto_clases.modelo.DAOImpl.RequerimientoDAOImpl;
 import java.util.List;
 
 /**
  *
  * @author fernanda
  */
-public class OrdenControlerImpl implements IOrdenControlador {
+public class RequerimientoControlerImpl implements IRequerimientoControlador {
 
     @Override
-    public void insert(Orden cliente)  {
+    public void insert(Requerimiento objeto)  {
         try {
-            IOrdenDAO sqlc = new OrdenDAOImpl(Orden.class);
-            sqlc.insert(cliente);
+            IRequerimientoDAO sqlc = new RequerimientoDAOImpl(Requerimiento.class);
+            sqlc.insert(objeto);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -42,7 +46,7 @@ public class OrdenControlerImpl implements IOrdenControlador {
     }
 
     @Override
-    public boolean update(Orden cliente) throws Exception {
+    public boolean update(Requerimiento cliente) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 

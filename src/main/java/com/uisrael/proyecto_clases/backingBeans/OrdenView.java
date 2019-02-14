@@ -44,7 +44,7 @@ public class OrdenView implements Serializable {
         cliente.setDescripcion(txtDescripcion);
 
         try {
-            clientecontroler.insertOrden(cliente);
+            clientecontroler.insert(cliente);
             System.out.println("sus datos fueron ingresados");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
