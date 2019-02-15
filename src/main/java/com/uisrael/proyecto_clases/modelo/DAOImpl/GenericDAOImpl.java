@@ -21,7 +21,7 @@ public class GenericDAOImpl<T> implements IGenericDAO<T> {
 
     private Class<T> entityClass;
 
-    protected static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.requerimientos_requerimientospro_war_1.0-SNAPSHOTPU");
+    protected static final EntityManagerFactory emf = Persistence.createEntityManagerFactory("com.requerimientos_requerimientospro_war_1.0-SNAPSHOTPU2");
     protected EntityManager entityManager;
 
     public GenericDAOImpl() {
@@ -36,10 +36,7 @@ public class GenericDAOImpl<T> implements IGenericDAO<T> {
     @Override
     public T create(T t) {
 
-        entityManager.getTransaction().begin();
         entityManager.persist(t);
-        entityManager.getTransaction().commit();
-        entityManager.close();
         return t;
 
     }
@@ -51,7 +48,9 @@ public class GenericDAOImpl<T> implements IGenericDAO<T> {
 
     @Override
     public void beginTransaction() {
-        entityManager.getTransaction().begin();
+        if (!entityManager.getTransaction().isActive()) {
+            entityManager.getTransaction().begin();
+        }
     }
 
     @Override

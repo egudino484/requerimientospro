@@ -43,6 +43,21 @@ public class Cliente implements Serializable {
     @ManyToOne
     private Usuario usuario;
 
+    public Cliente() {
+    }
+
+    public Cliente(Long id, String name, String apellidos, String direccion, String telefono, String cedula, String correo, String movil, Usuario usuario) {
+        this.id = id;
+        this.name = name;
+        this.apellidos = apellidos;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.cedula = cedula;
+        this.correo = correo;
+        this.movil = movil;
+        this.usuario = usuario;
+    }
+
     public Usuario getUsuario() {
         return usuario;
     }
@@ -117,7 +132,7 @@ public class Cliente implements Serializable {
 
     @Override
     public String toString() {
-        return "[ id=" + id + ",name" + name + " ]";
+        return "Cliente{" + "id=" + id + ", name=" + name + ", apellidos=" + apellidos + ", direccion=" + direccion + ", telefono=" + telefono + ", cedula=" + cedula + ", correo=" + correo + ", movil=" + movil + ", usuario=" + usuario + '}';
     }
 
 }

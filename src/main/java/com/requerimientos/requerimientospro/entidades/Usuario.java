@@ -39,6 +39,20 @@ public class Usuario implements Serializable {
     @Column(length = 100)
     private String cedula;
 
+    public Usuario(Long id, String username, String password, String nombres, String apellidos, String direccion, String telefono, String cedula) {
+        this.id = id;
+        this.username = username;
+        this.password = password;
+        this.nombres = nombres;
+        this.apellidos = apellidos;
+        this.direccion = direccion;
+        this.telefono = telefono;
+        this.cedula = cedula;
+    }
+
+    public Usuario() {
+    }
+
     public String getNombres() {
         return nombres;
     }
@@ -125,7 +139,7 @@ public class Usuario implements Serializable {
 
     @Override
     public String toString() {
-        return "com.requerimientos.requerimientospro.entidades.Usuario[ id=" + id + " ]";
+        return "Usuario{" + "id=" + id + ", username=" + username + ", password=" + password + ", nombres=" + nombres + ", apellidos=" + apellidos + ", direccion=" + direccion + ", telefono=" + telefono + ", cedula=" + cedula + '}';
     }
 
 }

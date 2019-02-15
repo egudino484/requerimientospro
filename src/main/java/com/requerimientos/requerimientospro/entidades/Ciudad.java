@@ -24,13 +24,13 @@ public class Ciudad implements Serializable {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     @Column(length = 100)
-    private Long descripcion;
+    private String descripcion;
 
-    public Long getDescripcion() {
+    public String getDescripcion() {
         return descripcion;
     }
 
-    public void setDescripcion(Long descripcion) {
+    public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
     }
 

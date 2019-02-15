@@ -33,7 +33,7 @@ public class Requerimiento implements Serializable {
     @Column(length = 255)
     private String observaciones;
     @Column(length = 100)
-    private Date telefonoContacto;
+    private String telefonoContacto;
 //relaciones 
 
     @ManyToOne
@@ -111,11 +111,11 @@ public class Requerimiento implements Serializable {
         this.observaciones = observaciones;
     }
 
-    public Date getTelefonoContacto() {
+    public String getTelefonoContacto() {
         return telefonoContacto;
     }
 
-    public void setTelefonoContacto(Date telefonoContacto) {
+    public void setTelefonoContacto(String telefonoContacto) {
         this.telefonoContacto = telefonoContacto;
     }
 
@@ -149,7 +149,11 @@ public class Requerimiento implements Serializable {
 
     @Override
     public String toString() {
-        return "com.requerimientos.requerimientospro.entidades.Requerimiento[ id=" + id + " ]";
+        return "Requerimiento{" + "id=" + id + ", fechaAsignacion=" + fechaAsignacion + ", fechaVisita=" + fechaVisita + ", observaciones=" + observaciones + ", telefonoContacto=" + telefonoContacto + ", cliente=" + cliente + ", usuario=" + usuario + ", estado=" + estado + ", orden=" + orden + ", ciudad=" + ciudad + '}';
     }
+
+   
+
+    
 
 }
