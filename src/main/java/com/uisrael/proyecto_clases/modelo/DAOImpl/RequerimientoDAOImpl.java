@@ -11,6 +11,7 @@ import com.requerimientos.requerimientospro.entidades.Requerimiento;
 import com.uisrael.proyecto_clases.modelo.DAO.IClienteDAO;
 import com.uisrael.proyecto_clases.modelo.DAO.IOrdenDAO;
 import com.uisrael.proyecto_clases.modelo.DAO.IRequerimientoDAO;
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
@@ -37,9 +38,6 @@ public class RequerimientoDAOImpl extends GenericDAOImpl<Requerimiento> implemen
         this.closeTransaction();
         
     }*/
-
-  
-
     @Override
     public boolean delete() {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
@@ -52,7 +50,17 @@ public class RequerimientoDAOImpl extends GenericDAOImpl<Requerimiento> implemen
 
     @Override
     public boolean insert(Requerimiento objeto) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+
+            this.beginTransaction();
+            this.create(objeto);
+            this.commit();
+            this.closeTransaction();
+            return true;
+        } catch (Exception e) {
+            System.err.println("Error al insertar :" + e.getMessage());
+            return false;
+        }
     }
 
     @Override
@@ -60,6 +68,18 @@ public class RequerimientoDAOImpl extends GenericDAOImpl<Requerimiento> implemen
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
 
-   
+    @Override
+    public List<Requerimiento> findAll() {
+
+        List<Requerimiento> lista;
+        try {
+            lista = entityManager.createQuery("SELECT c FROM Requerimiento c", Requerimiento.class).getResultList();
+            return lista;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return new ArrayList<>();
+
+        }
+    }
 
 }

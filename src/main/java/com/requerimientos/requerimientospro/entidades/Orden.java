@@ -69,7 +69,8 @@ public class Orden implements Serializable {
 
     @Override
     public String toString() {
-        return "com.requerimientos.requerimientospro.entidades.Orden[ id=" + id + " ]";
+        return "Orden{" + "id=" + id + ", descripcion=" + descripcion + '}';
     }
-    
+
+  
 }

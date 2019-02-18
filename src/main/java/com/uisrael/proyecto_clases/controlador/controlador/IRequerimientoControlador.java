@@ -18,7 +18,9 @@ public interface IRequerimientoControlador {
 
     public void insert(Requerimiento objeto) throws Exception;
 
-    public List<Orden> findByid(int cod) throws Exception;
+    public List<Requerimiento> findByid(int cod) throws Exception;
+
+    public List<Requerimiento> findAll() throws Exception;
 
     public boolean delete() throws Exception;
 

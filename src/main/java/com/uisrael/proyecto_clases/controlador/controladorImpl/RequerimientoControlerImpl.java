@@ -17,6 +17,7 @@ import com.uisrael.proyecto_clases.modelo.DAO.IRequerimientoDAO;
 import com.uisrael.proyecto_clases.modelo.DAOImpl.ClienteDAOImpl;
 import com.uisrael.proyecto_clases.modelo.DAOImpl.OrdenDAOImpl;
 import com.uisrael.proyecto_clases.modelo.DAOImpl.RequerimientoDAOImpl;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -26,7 +27,7 @@ import java.util.List;
 public class RequerimientoControlerImpl implements IRequerimientoControlador {
 
     @Override
-    public void insert(Requerimiento objeto)  {
+    public void insert(Requerimiento objeto) {
         try {
             IRequerimientoDAO sqlc = new RequerimientoDAOImpl(Requerimiento.class);
             sqlc.insert(objeto);
@@ -36,8 +37,19 @@ public class RequerimientoControlerImpl implements IRequerimientoControlador {
     }
 
     @Override
-    public List<Orden> findByid(int cod) throws Exception {
+    public List<Requerimiento> findByid(int cod) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    @Override
+    public List<Requerimiento> findAll() throws Exception {
+        try {
+            IRequerimientoDAO sqlc = new RequerimientoDAOImpl(Requerimiento.class);
+            return sqlc.findAll();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 
     @Override
@@ -49,10 +61,5 @@ public class RequerimientoControlerImpl implements IRequerimientoControlador {
     public boolean update(Requerimiento cliente) throws Exception {
         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
-
- 
-    
-
- 
 
 }

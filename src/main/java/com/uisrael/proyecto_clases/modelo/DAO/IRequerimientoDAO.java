@@ -18,6 +18,9 @@ public interface IRequerimientoDAO {
     public boolean insert(Requerimiento objeto);
 
     public List<Requerimiento> findId(int cod);
+
+    public List<Requerimiento> findAll();
+
     public boolean delete();
 
     public boolean update(Requerimiento objeto);
