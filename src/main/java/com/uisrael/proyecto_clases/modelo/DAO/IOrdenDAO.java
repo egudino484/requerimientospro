@@ -15,14 +15,15 @@ import java.util.List;
  */
 public interface IOrdenDAO {
 
-    public boolean insert(Orden cliente);
+    public boolean insertar(Orden cliente);
 
     public List<Orden> findByid(int cod);
 
-    public List<Orden> findByDescripcion(String nombre);
 
-    public boolean delete(int code);
+    public boolean eliminar(Long code);
 
-    public boolean update(Orden orden);
+    public boolean actualizar(Orden orden);
+
+    public List<Orden> findAll();
 
 }

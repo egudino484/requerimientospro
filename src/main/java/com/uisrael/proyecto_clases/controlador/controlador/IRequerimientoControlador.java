@@ -22,7 +22,7 @@ public interface IRequerimientoControlador {
 
     public List<Requerimiento> findAll() throws Exception;
 
-    public boolean delete() throws Exception;
+    public boolean delete(int code) throws Exception;
 
     public boolean update(Requerimiento objeto) throws Exception;
 

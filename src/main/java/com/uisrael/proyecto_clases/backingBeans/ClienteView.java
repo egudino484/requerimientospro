@@ -6,8 +6,14 @@
 package com.uisrael.proyecto_clases.backingBeans;
 
 import com.requerimientos.requerimientospro.entidades.Cliente;
+import com.requerimientos.requerimientospro.entidades.Orden;
+import com.requerimientos.requerimientospro.entidades.Usuario;
 import com.uisrael.proyecto_clases.controlador.controladorImpl.ClienteControlerImpl;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -20,15 +26,68 @@ import javax.faces.bean.ViewScoped;
 @ViewScoped
 public class ClienteView implements Serializable {
 
-    private String txtidCliente;
+    private Long txtidCliente;
+    private Long txtidUsuario;
+
+    public Long getTxtidUsuario() {
+        return txtidUsuario;
+    }
+
+    public void setTxtidUsuario(Long txtidUsuario) {
+        this.txtidUsuario = txtidUsuario;
+    }
     private String txtNombre;
     private String txtApellido;
     private String txtDireccion;
     private String txtTelefono;
+    private String txtCorreo;
+    private String txtMovil;
+
+    public String getTxtMovil() {
+        return txtMovil;
+    }
+
+    public void setTxtMovil(String txtMovil) {
+        this.txtMovil = txtMovil;
+    }
+
+    public Long getTxtUsuario() {
+        return txtUsuario;
+    }
+
+    public void setTxtUsuario(Long txtUsuario) {
+        this.txtUsuario = txtUsuario;
+    }
     private String txtCi;
+    private Long txtUsuario;
     private int txtEstado;
-    private ClienteControlerImpl clientecontroler;
-    private Cliente cliente;
+    private ClienteControlerImpl controlador;
+    private Cliente objeto;
+    private Cliente objetoSeleccionado;
+
+    public String getTxtCorreo() {
+        return txtCorreo;
+    }
+
+    public void setTxtCorreo(String txtCorreo) {
+        this.txtCorreo = txtCorreo;
+    }
+
+    public Cliente getObjeto() {
+        return objeto;
+    }
+
+    public void setObjeto(Cliente objeto) {
+        this.objeto = objeto;
+    }
+
+    public Cliente getObjetoSeleccionado() {
+        return objetoSeleccionado;
+    }
+
+    public void setObjetoSeleccionado(Cliente objetoSeleccionado) {
+        this.objetoSeleccionado = objetoSeleccionado;
+    }
 
     public ClienteView() {
 
@@ -36,32 +95,79 @@ public class ClienteView implements Serializable {
 
     @PostConstruct
     public void init() {
-        cliente = new Cliente();
-        clientecontroler = new ClienteControlerImpl();
+        objeto = new Cliente();
+        objetoSeleccionado = new Cliente();
+        controlador = new ClienteControlerImpl();
     }
 
     public void insertarCiente() {
-        cliente.setId(-1l);
-        cliente.setName(txtNombre);
-        cliente.setApellidos(txtApellido);
-        cliente.setDireccion(txtDireccion);
-        cliente.setTelefono(txtTelefono);
-        cliente.setCedula(txtCi);
-        
+        objeto.setId(txtidCliente);
+        objeto.setName(txtNombre);
+        objeto.setApellidos(txtApellido);
+        objeto.setDireccion(txtDireccion);
+        objeto.setTelefono(txtTelefono);
+        objeto.setCedula(txtCi);
+        objeto.setCorreo(txtCorreo);
+        objeto.setMovil(txtMovil);
+        Usuario usuario = new Usuario();
+        usuario.setId(txtidUsuario);
+        objeto.setUsuario(usuario);
 
         try {
-            clientecontroler.insertCliente(cliente);
+            controlador.insertCliente(objeto);
             System.out.println("sus datos fueron ingresados");
         } catch (Exception e) {
-            System.out.println("Error: "+e.getMessage());
+            System.out.println("Error: " + e.getMessage());
         }
     }
 
-    public String getTxtidCliente() {
+    public void actualizar() {
+
+        try {
+            controlador.updateCliente(objetoSeleccionado);
+            System.out.println("sus datos fueron actualizados");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void eliminar(Long code) {
+
+        try {
+            controlador.deleteCliente(code.intValue());
+            System.out.println("sus datos fueron eliminados");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public List<Cliente> listar() {
+
+        try {
+
+            return controlador.findAll();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return new ArrayList<>();
+        }
+
+    }
+
+    public void seleccionar(Long code) {
+        try {
+            System.out.println("id seleccionado:" + code);
+            objetoSeleccionado = controlador.findClienteid(code.intValue()).get(0);
+            System.err.println("termino de convertir: " + objetoSeleccionado);
+        } catch (Exception ex) {
+            Logger.getLogger(OrdenView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Long getTxtidCliente() {
         return txtidCliente;
     }
 
-    public void setTxtidCliente(String txtidCliente) {
+    public void setTxtidCliente(Long txtidCliente) {
         this.txtidCliente = txtidCliente;
     }
 
@@ -114,19 +220,19 @@ public class ClienteView implements Serializable {
     }
 
     public ClienteControlerImpl getClientecontroler() {
-        return clientecontroler;
+        return controlador;
     }
 
     public void setClientecontroler(ClienteControlerImpl clientecontroler) {
-        this.clientecontroler = clientecontroler;
+        this.controlador = clientecontroler;
     }
 
     public Cliente getCliente() {
-        return cliente;
+        return objeto;
     }
 
     public void setCliente(Cliente cliente) {
-        this.cliente = cliente;
+        this.objeto = cliente;
     }
 
 }

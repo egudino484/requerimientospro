@@ -10,7 +10,7 @@ import javax.annotation.Generated;
 import javax.persistence.metamodel.SingularAttribute;
 import javax.persistence.metamodel.StaticMetamodel;
 
-@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-02-17T18:34:00")
+@Generated(value="EclipseLink-2.5.2.v20140319-rNA", date="2019-02-18T06:54:51")
 @StaticMetamodel(Requerimiento.class)
 public class Requerimiento_ { 
 
@@ -23,6 +23,6 @@ public class Requerimiento_ {
     public static volatile SingularAttribute<Requerimiento, Usuario> usuario;
     public static volatile SingularAttribute<Requerimiento, Long> id;
     public static volatile SingularAttribute<Requerimiento, Orden> orden;
-    public static volatile SingularAttribute<Requerimiento, Date> telefonoContacto;
+    public static volatile SingularAttribute<Requerimiento, String> telefonoContacto;
 
 }

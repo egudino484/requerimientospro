@@ -15,14 +15,14 @@ import java.util.List;
  */
 public interface IRequerimientoDAO {
 
-    public boolean insert(Requerimiento objeto);
+    public boolean insertar(Requerimiento objeto);
 
     public List<Requerimiento> findId(int cod);
 
     public List<Requerimiento> findAll();
 
-    public boolean delete();
+    public boolean eliminar(int code);
 
-    public boolean update(Requerimiento objeto);
+    public boolean actualizar(Requerimiento objeto);
 
 }

@@ -26,7 +26,7 @@ public class OrdenControlerImpl implements IOrdenControlador {
     public void insert(Orden cliente) {
         try {
             IOrdenDAO sqlc = new OrdenDAOImpl(Orden.class);
-            sqlc.insert(cliente);
+            sqlc.insertar(cliente);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -44,10 +44,21 @@ public class OrdenControlerImpl implements IOrdenControlador {
     }
 
     @Override
-    public boolean delete(int cod) throws Exception {
+    public List<Orden> findAll() throws Exception {
         try {
             IOrdenDAO sqlc = new OrdenDAOImpl(Orden.class);
-            sqlc.delete(cod);
+            return sqlc.findAll();
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return new ArrayList<>();
+        }
+    }
+
+    @Override
+    public boolean delete(Long cod) throws Exception {
+        try {
+            IOrdenDAO sqlc = new OrdenDAOImpl(Orden.class);
+            sqlc.eliminar(cod);
             return true;
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -59,12 +70,14 @@ public class OrdenControlerImpl implements IOrdenControlador {
     public boolean update(Orden cliente) throws Exception {
         try {
             IOrdenDAO sqlc = new OrdenDAOImpl(Orden.class);
-            sqlc.insert(cliente);
+            sqlc.actualizar(cliente);
             return true;
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
             return false;
         }
     }
+
+  
 
 }

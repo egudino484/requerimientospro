@@ -10,6 +10,10 @@ import com.requerimientos.requerimientospro.entidades.Orden;
 import com.uisrael.proyecto_clases.controlador.controladorImpl.ClienteControlerImpl;
 import com.uisrael.proyecto_clases.controlador.controladorImpl.OrdenControlerImpl;
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.faces.bean.ManagedBean;
 import javax.faces.bean.ViewScoped;
@@ -27,6 +31,7 @@ public class OrdenView implements Serializable {
 
     private OrdenControlerImpl controlador;
     private Orden objeto;
+    private Orden objetoSeleccionado;
 
     public OrdenView() {
 
@@ -35,6 +40,8 @@ public class OrdenView implements Serializable {
     @PostConstruct
     public void init() {
         objeto = new Orden();
+        objetoSeleccionado = new Orden();
+
         controlador = new OrdenControlerImpl();
     }
 
@@ -51,29 +58,48 @@ public class OrdenView implements Serializable {
         }
     }
 
-    public void editar() {
-        objeto.setId(-1l);
-
-        objeto.setDescripcion(txtDescripcion);
+    public void actualizar() {
 
         try {
-            controlador.update(objeto);
-            System.out.println("sus datos fueron ingresados");
+            controlador.update(objetoSeleccionado);
+            System.out.println("sus datos fueron actualizados");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
 
-    public void eliminar() {
+    public void eliminar(Long code) {
+
+        try {
+            controlador.delete(code);
+            System.out.println("sus datos fueron eliminados");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public List<Orden> listar() {
         objeto.setId(-1l);
 
         objeto.setDescripcion(txtDescripcion);
 
         try {
-            controlador.delete((int)(long)objeto.getId());
-            System.out.println("sus datos fueron ingresados");
+
+            return controlador.findAll();
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
+            return new ArrayList<>();
+        }
+
+    }
+
+    public void seleccionar(Long code) {
+        try {
+            System.out.println("id seleccionado:" + code);
+            objetoSeleccionado = controlador.findByid(code.intValue()).get(0);
+            System.err.println("termino de convertir: " + objetoSeleccionado);
+        } catch (Exception ex) {
+            Logger.getLogger(OrdenView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
@@ -107,6 +133,22 @@ public class OrdenView implements Serializable {
 
     public void setCliente(Orden cliente) {
         this.objeto = cliente;
+    }
+
+    public Orden getObjeto() {
+        return objeto;
+    }
+
+    public void setObjeto(Orden objeto) {
+        this.objeto = objeto;
+    }
+
+    public Orden getObjetoSeleccionado() {
+        return objetoSeleccionado;
+    }
+
+    public void setObjetoSeleccionado(Orden objetoSeleccionado) {
+        this.objetoSeleccionado = objetoSeleccionado;
     }
 
 }

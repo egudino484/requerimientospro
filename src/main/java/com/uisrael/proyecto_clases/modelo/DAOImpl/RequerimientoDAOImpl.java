@@ -39,17 +39,29 @@ public class RequerimientoDAOImpl extends GenericDAOImpl<Requerimiento> implemen
         
     }*/
     @Override
-    public boolean delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean eliminar(int code) {
+        System.out.println("DAO" + code);
+        this.beginTransaction();
+        Requerimiento objEliminar = entityManager.find(Requerimiento.class, code);
+        this.delete(objEliminar);
+        this.commit();
+        this.closeTransaction();
+        return true;
     }
 
     @Override
-    public boolean update(Requerimiento obj) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean actualizar(Requerimiento objeto) {
+        System.out.println("DAO" + objeto.toString());
+        this.beginTransaction();
+        //update object with entity manager 
+        this.update(objeto);
+        this.commit();
+        this.closeTransaction();
+        return true;
     }
 
     @Override
-    public boolean insert(Requerimiento objeto) {
+    public boolean insertar(Requerimiento objeto) {
         try {
 
             this.beginTransaction();
@@ -65,7 +77,8 @@ public class RequerimientoDAOImpl extends GenericDAOImpl<Requerimiento> implemen
 
     @Override
     public List<Requerimiento> findId(int cod) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Requerimiento> lista = entityManager.createQuery("SELECT o FROM Requerimiento o where o.id=" + cod, Requerimiento.class).getResultList();
+        return lista;
     }
 
     @Override

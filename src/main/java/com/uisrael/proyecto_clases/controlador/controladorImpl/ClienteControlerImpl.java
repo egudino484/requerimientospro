@@ -9,6 +9,7 @@ import com.requerimientos.requerimientospro.entidades.Cliente;
 import com.uisrael.proyecto_clases.controlador.controlador.IClienteControlador;
 import com.uisrael.proyecto_clases.modelo.DAO.IClienteDAO;
 import com.uisrael.proyecto_clases.modelo.DAOImpl.ClienteDAOImpl;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -18,36 +19,60 @@ import java.util.List;
 public class ClienteControlerImpl implements IClienteControlador {
 
     @Override
-    public void insertCliente(Cliente cliente)  {
+    public void insertCliente(Cliente cliente) {
         try {
             IClienteDAO sqlc = new ClienteDAOImpl(Cliente.class);
-            sqlc.insertCliente(cliente);
+            sqlc.insertar(cliente);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
 
-    
-
     @Override
-    public List<Cliente> findClienteid(int cod) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Cliente> findClienteid(int code) throws Exception {
+        try {
+            IClienteDAO sqlc = new ClienteDAOImpl(Cliente.class);
+            return sqlc.findById(code);
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 
     @Override
-    public List<Cliente> findClientenombre(String nombre) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public List<Cliente> findAll() throws Exception {
+        try {
+            IClienteDAO sqlc = new ClienteDAOImpl(Cliente.class);
+            return sqlc.findAll();
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 
     @Override
-    public boolean deleteCliente() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean deleteCliente(int code) throws Exception {
+        try {
+            IClienteDAO sqlc = new ClienteDAOImpl(Cliente.class);
+            return sqlc.eliminar(code);
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return false;
+        }
     }
 
     public boolean updateCliente(Cliente cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-    }
+        try {
+            IClienteDAO sqlc = new ClienteDAOImpl(Cliente.class);
+            return sqlc.actualizar(cliente);
 
- 
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return false;
+        }
+    }
 
 }

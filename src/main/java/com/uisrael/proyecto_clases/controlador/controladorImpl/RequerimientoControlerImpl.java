@@ -30,7 +30,7 @@ public class RequerimientoControlerImpl implements IRequerimientoControlador {
     public void insert(Requerimiento objeto) {
         try {
             IRequerimientoDAO sqlc = new RequerimientoDAOImpl(Requerimiento.class);
-            sqlc.insert(objeto);
+            sqlc.insertar(objeto);
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
@@ -38,7 +38,14 @@ public class RequerimientoControlerImpl implements IRequerimientoControlador {
 
     @Override
     public List<Requerimiento> findByid(int cod) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            IRequerimientoDAO sqlc = new RequerimientoDAOImpl(Requerimiento.class);
+            return sqlc.findId(cod);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return new ArrayList<>();
+
+        }
     }
 
     @Override
@@ -53,13 +60,27 @@ public class RequerimientoControlerImpl implements IRequerimientoControlador {
     }
 
     @Override
-    public boolean delete() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean delete(int code) throws Exception {
+        try {
+            IRequerimientoDAO sqlc = new RequerimientoDAOImpl(Requerimiento.class);
+            return sqlc.eliminar(code);
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return false;
+        }
     }
 
     @Override
-    public boolean update(Requerimiento cliente) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean update(Requerimiento objeto) throws Exception {
+        try {
+            IRequerimientoDAO sqlc = new RequerimientoDAOImpl(Requerimiento.class);
+            return sqlc.actualizar(objeto);
+
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return false;
+        }
     }
 
 }

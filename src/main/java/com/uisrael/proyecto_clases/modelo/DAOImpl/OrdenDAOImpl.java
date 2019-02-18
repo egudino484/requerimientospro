@@ -27,19 +27,13 @@ public class OrdenDAOImpl extends GenericDAOImpl<Orden> implements IOrdenDAO {
         super(entityClass);
     }
 
-    /*public void insertCliente(Cliente cliente) {
-        System.out.println("DAO"+cliente.toString());
-        this.beginTransaction();
-        this.create(cliente);
-        this.commit();
-        this.closeTransaction();
-        
-    }*/
     @Override
-    public boolean insert(Orden objeto) {
-        System.out.println("DAO" + objeto.toString());
-        this.beginTransaction();
-        this.create(objeto);
+    public boolean insertar(Orden objeto) {
+        System.out.println("DAO: " + objeto.toString());
+         this.beginTransaction();
+        Orden orden = this.create(objeto);
+        System.out.println("DAO after: " + orden.toString());
+
         this.commit();
         this.closeTransaction();
         return true;
@@ -47,28 +41,30 @@ public class OrdenDAOImpl extends GenericDAOImpl<Orden> implements IOrdenDAO {
 
     @Override
     public List<Orden> findByid(int cod) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Orden> lista = entityManager.createQuery("SELECT o FROM Orden o where o.id=" + cod, Orden.class).getResultList();
+        return lista;
     }
 
     @Override
-    public List<Orden> findByDescripcion(String nombre) {
-        List<Orden> lista = entityManager.createQuery("SELECT f FROM Orden ", Orden.class).getResultList();
+    public List<Orden> findAll() {
+        List<Orden> lista = entityManager.createQuery("SELECT o FROM Orden o", Orden.class).getResultList();
         return lista;
 
     }
 
     @Override
-    public boolean delete(int code) {
-        System.out.println("DAO" + code);
+    public boolean eliminar(Long code) {
+        System.out.println("DAO: " + code);
         this.beginTransaction();
-        this.delete(code);
+        Orden objEliminar = entityManager.find(Orden.class, code);
+        this.delete(objEliminar);
         this.commit();
         this.closeTransaction();
         return true;
     }
 
     @Override
-    public boolean update(Orden objeto) {
+    public boolean actualizar(Orden objeto) {
         System.out.println("DAO" + objeto.toString());
         this.beginTransaction();
         this.update(objeto);

@@ -14,14 +14,14 @@ import java.util.List;
  */
 public interface IClienteDAO {
 
-    public boolean insertCliente(Cliente cliente);
+    public boolean insertar(Cliente cliente);
 
-    public List<Cliente> findClienteid(int cod);
+    public List<Cliente> findById(int cod);
 
-    public List<Cliente> findClientenombre(String nombre);
+    public List<Cliente> findAll();
 
-    public boolean deleteCliente();
+    public boolean eliminar(int code);
 
-    public boolean updateCliente(Cliente cliente);
+    public boolean actualizar(Cliente cliente);
 
 }

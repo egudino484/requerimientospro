@@ -18,9 +18,9 @@ public interface IClienteControlador {
 
     public List<Cliente> findClienteid(int cod) throws Exception;
 
-    public List<Cliente> findClientenombre(String nombre)throws Exception;
+    public List<Cliente> findAll()throws Exception;
 
-    public boolean deleteCliente()throws Exception;
+    public boolean deleteCliente(int code )throws Exception;
 
     public boolean updateCliente(Cliente cliente)throws Exception;
 

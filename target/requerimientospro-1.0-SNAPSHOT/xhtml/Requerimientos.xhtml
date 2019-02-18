@@ -24,16 +24,16 @@ and open the template in the editor.
                 <p:panel header="Ingreso de Clientes" style="">
                     <h:panelGrid columns="2">
                         <p:outputLabel>Id</p:outputLabel>
-                        <p:inputText value="#{requerimientoView.txtid}">  </p:inputText>
+                        <p:inputText value="#{requerimientoView.id}">  </p:inputText>
                         <p:outputLabel>FECHA ASIGNACION</p:outputLabel>
-                        <p:inputText value="#{requerimientoView.txtfechaAsignacion}">    <f:convertDateTime pattern="dd/MM/yyyy" type="date" />  </p:inputText>
+                        <p:inputText value="#{requerimientoView.fechaAsignacion}">    <f:convertDateTime pattern="dd/MM/yyyy" type="date" />  </p:inputText>
                         <p:outputLabel>FECHA VISITA</p:outputLabel>
-                        <p:inputText value="#{requerimientoView.txtfechaVisita}">    <f:convertDateTime pattern="dd.MM.yyyy" />  </p:inputText>
+                        <p:inputText value="#{requerimientoView.fechaVisita}">    <f:convertDateTime pattern="dd.MM.yyyy" />  </p:inputText>
 
                         <p:outputLabel>OBSERVACIONES</p:outputLabel>
-                        <p:inputText value="#{requerimientoView.txtobservaciones}"></p:inputText>
+                        <p:inputText value="#{requerimientoView.observaciones}"></p:inputText>
                         <p:outputLabel>TELEFONO</p:outputLabel>
-                        <p:inputText value="#{requerimientoView.txttelefonoContacto}"></p:inputText>
+                        <p:inputText value="#{requerimientoView.telefonoContacto}"></p:inputText>
                         <p:outputLabel>ID Ciudad</p:outputLabel>
                         <p:inputText value="#{requerimientoView.ciudad.id}"></p:inputText>
 
