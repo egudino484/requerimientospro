@@ -13,16 +13,17 @@ import com.uisrael.proyecto_clases.modelo.DAO.IClienteDAO;
 import com.uisrael.proyecto_clases.modelo.DAO.IOrdenDAO;
 import com.uisrael.proyecto_clases.modelo.DAOImpl.ClienteDAOImpl;
 import com.uisrael.proyecto_clases.modelo.DAOImpl.OrdenDAOImpl;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  *
- * @author fernanda
+ * @author esanchez
  */
 public class OrdenControlerImpl implements IOrdenControlador {
 
     @Override
-    public void insert(Orden cliente)  {
+    public void insert(Orden cliente) {
         try {
             IOrdenDAO sqlc = new OrdenDAOImpl(Orden.class);
             sqlc.insert(cliente);
@@ -33,22 +34,37 @@ public class OrdenControlerImpl implements IOrdenControlador {
 
     @Override
     public List<Orden> findByid(int cod) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            IOrdenDAO sqlc = new OrdenDAOImpl(Orden.class);
+            return sqlc.findByid(cod);
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return new ArrayList<>();
+        }
     }
 
     @Override
-    public boolean delete() throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean delete(int cod) throws Exception {
+        try {
+            IOrdenDAO sqlc = new OrdenDAOImpl(Orden.class);
+            sqlc.delete(cod);
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return false;
+        }
     }
 
     @Override
     public boolean update(Orden cliente) throws Exception {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        try {
+            IOrdenDAO sqlc = new OrdenDAOImpl(Orden.class);
+            sqlc.insert(cliente);
+            return true;
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+            return false;
+        }
     }
-
- 
-    
-
- 
 
 }

@@ -35,10 +35,14 @@ public class OrdenDAOImpl extends GenericDAOImpl<Orden> implements IOrdenDAO {
         this.closeTransaction();
         
     }*/
-
     @Override
-    public boolean insert(Orden cliente) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean insert(Orden objeto) {
+        System.out.println("DAO" + objeto.toString());
+        this.beginTransaction();
+        this.create(objeto);
+        this.commit();
+        this.closeTransaction();
+        return true;
     }
 
     @Override
@@ -48,19 +52,29 @@ public class OrdenDAOImpl extends GenericDAOImpl<Orden> implements IOrdenDAO {
 
     @Override
     public List<Orden> findByDescripcion(String nombre) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+        List<Orden> lista = entityManager.createQuery("SELECT f FROM Orden ", Orden.class).getResultList();
+        return lista;
+
     }
 
     @Override
-    public boolean delete() {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean delete(int code) {
+        System.out.println("DAO" + code);
+        this.beginTransaction();
+        this.delete(code);
+        this.commit();
+        this.closeTransaction();
+        return true;
     }
 
     @Override
-    public boolean update(Orden orden) {
-        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    public boolean update(Orden objeto) {
+        System.out.println("DAO" + objeto.toString());
+        this.beginTransaction();
+        this.update(objeto);
+        this.commit();
+        this.closeTransaction();
+        return true;
     }
-
-   
 
 }

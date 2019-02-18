@@ -19,7 +19,7 @@ public interface IOrdenControlador {
 
     public List<Orden> findByid(int cod) throws Exception;
 
-    public boolean delete() throws Exception;
+    public boolean delete(int code) throws Exception;
 
     public boolean update(Orden cliente) throws Exception;
 

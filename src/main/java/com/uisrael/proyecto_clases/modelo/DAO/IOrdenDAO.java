@@ -21,7 +21,7 @@ public interface IOrdenDAO {
 
     public List<Orden> findByDescripcion(String nombre);
 
-    public boolean delete();
+    public boolean delete(int code);
 
     public boolean update(Orden orden);
 

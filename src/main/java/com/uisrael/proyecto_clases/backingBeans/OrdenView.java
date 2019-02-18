@@ -25,8 +25,8 @@ public class OrdenView implements Serializable {
     private String txtidOrden;
     private String txtDescripcion;
 
-    private OrdenControlerImpl clientecontroler;
-    private Orden cliente;
+    private OrdenControlerImpl controlador;
+    private Orden objeto;
 
     public OrdenView() {
 
@@ -34,17 +34,43 @@ public class OrdenView implements Serializable {
 
     @PostConstruct
     public void init() {
-        cliente = new Orden();
-        clientecontroler = new OrdenControlerImpl();
+        objeto = new Orden();
+        controlador = new OrdenControlerImpl();
     }
 
-    public void insertarCiente() {
-        cliente.setId(-1l);
+    public void insertar() {
+        objeto.setId(-1l);
 
-        cliente.setDescripcion(txtDescripcion);
+        objeto.setDescripcion(txtDescripcion);
 
         try {
-            clientecontroler.insert(cliente);
+            controlador.insert(objeto);
+            System.out.println("sus datos fueron ingresados");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void editar() {
+        objeto.setId(-1l);
+
+        objeto.setDescripcion(txtDescripcion);
+
+        try {
+            controlador.update(objeto);
+            System.out.println("sus datos fueron ingresados");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+
+    public void eliminar() {
+        objeto.setId(-1l);
+
+        objeto.setDescripcion(txtDescripcion);
+
+        try {
+            controlador.delete((int)(long)objeto.getId());
             System.out.println("sus datos fueron ingresados");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
@@ -68,19 +94,19 @@ public class OrdenView implements Serializable {
     }
 
     public OrdenControlerImpl getClientecontroler() {
-        return clientecontroler;
+        return controlador;
     }
 
     public void setClientecontroler(OrdenControlerImpl clientecontroler) {
-        this.clientecontroler = clientecontroler;
+        this.controlador = clientecontroler;
     }
 
     public Orden getCliente() {
-        return cliente;
+        return objeto;
     }
 
     public void setCliente(Orden cliente) {
-        this.cliente = cliente;
+        this.objeto = cliente;
     }
 
 }

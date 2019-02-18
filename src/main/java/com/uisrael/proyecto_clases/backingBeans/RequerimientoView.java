@@ -78,5 +78,44 @@ public class RequerimientoView implements Serializable {
             System.out.println("Error: " + e.getMessage());
         }
     }
+    
+    public void actualizar() {
+        objeto.setId(-1l);
+        objeto.setFechaAsignacion(new Date());
+        objeto.setFechaVisita(new Date());
+        objeto.setObservaciones(observaciones);
+        objeto.setTelefonoContacto(telefonoContacto);
+        objeto.setCliente(cliente);
+        objeto.setUsuario(usuario);
+        objeto.setEstado(estado);
+        objeto.setOrden(orden);
+        objeto.setCiudad(ciudad);
+
+        try {
+            controller.insert(objeto);
+            System.out.println("Sus datos fueron ingresados");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
+    public void eliminar() {
+        objeto.setId(-1l);
+        objeto.setFechaAsignacion(new Date());
+        objeto.setFechaVisita(new Date());
+        objeto.setObservaciones(observaciones);
+        objeto.setTelefonoContacto(telefonoContacto);
+        objeto.setCliente(cliente);
+        objeto.setUsuario(usuario);
+        objeto.setEstado(estado);
+        objeto.setOrden(orden);
+        objeto.setCiudad(ciudad);
+
+        try {
+            controller.insert(objeto);
+            System.out.println("Sus datos fueron ingresados");
+        } catch (Exception e) {
+            System.out.println("Error: " + e.getMessage());
+        }
+    }
 
 }
