@@ -23,7 +23,11 @@ and open the template in the editor.
                         <p:outputLabel>Id Cliente</p:outputLabel>
                         <p:inputText value="#{clienteView.txtidCliente}">  </p:inputText>
                         <p:outputLabel>Usuario</p:outputLabel>
-                        <p:inputText value="#{clienteView.txtidUsuario}">  </p:inputText>
+                        <h:selectOneMenu id="usuarioid" value="#{clienteView.txtidUsuario}">
+                            <f:selectItems value="#{clienteView.listaUsuarios}" var="obj"
+                                           itemValue="#{obj.id}" itemLabel="#{obj.username}" />
+                        </h:selectOneMenu>
+
                         <p:outputLabel>Nombre</p:outputLabel>
                         <p:inputText value="#{clienteView.txtNombre}">  </p:inputText>
                         <p:outputLabel>Apellido</p:outputLabel>
@@ -44,7 +48,7 @@ and open the template in the editor.
                     <p:commandButton value="Guardar" action="#{clienteView.insertarCiente()}" ></p:commandButton>
 
                 </p:panel>
-                <p:commandButton value="RECARGAR" onclick="location.reload();" ></p:commandButton>
+                <p:commandButton value="RECARGAR" onclick="window.location.href = window.location.href;" ></p:commandButton>
                 <p:panel header="listar" style="">
 
                     <h:panelGrid>
@@ -109,10 +113,27 @@ and open the template in the editor.
 
                         <f:facet name="header">  EDITAR                        </f:facet>  
 
-                        <h:outputText value="Nombre:" />  
+                        <h:outputText value="Nombres:" />  
                         <h:inputText value="#{clienteView.objetoSeleccionado.name}" />  
+                        <h:outputText value="Usuario:" />  
 
-
+                        <h:selectOneMenu id="usuarioid" value="#{clienteView.objetoSeleccionado.usuario.id}"
+                                         >
+                            <f:selectItems value="#{clienteView.listaUsuarios}" var="obj"
+                                           itemValue="#{obj.id}" itemLabel="#{obj.username}" />
+                        </h:selectOneMenu>
+                        <h:outputText value="Apellidos" />  
+                        <h:inputText value="#{clienteView.objetoSeleccionado.apellidos}" />  
+                        <h:outputText value="Direccion" />  
+                        <h:inputText value="#{clienteView.objetoSeleccionado.direccion}" />  
+                        <h:outputText value="Telefono" />  
+                        <h:inputText value="#{clienteView.objetoSeleccionado.telefono}" />  
+                        <h:outputText value="Cedula" />  
+                        <h:inputText value="#{clienteView.objetoSeleccionado.cedula}" />  
+                        <h:outputText value="Correo" />  
+                        <h:inputText value="#{clienteView.objetoSeleccionado.correo}" /> 
+                        <h:outputText value="Movil" />  
+                        <h:inputText value="#{clienteView.objetoSeleccionado.movil}" />  
 
                     </h:panelGrid>  
 

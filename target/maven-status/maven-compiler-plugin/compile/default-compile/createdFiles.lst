@@ -1,3 +1,4 @@
+com\uisrael\proyecto_clases\controlador\controladorImpl\UsuarioControlerImpl.class
 com\uisrael\proyecto_clases\controlador\controladorImpl\OrdenControlerImpl.class
 com\uisrael\proyecto_clases\controlador\controlador\IOrdenControlador.class
 com\uisrael\proyecto_clases\modelo\DAO\IRequerimientoDAO.class
@@ -13,6 +14,7 @@ com\requerimientos\requerimientospro\controladores\exceptions\NonexistentEntityE
 com\uisrael\proyecto_clases\controlador\controlador\ICiudadControlador.class
 com\uisrael\proyecto_clases\backingBeans\OrdenView.class
 com\uisrael\proyecto_clases\modelo\DAOImpl\EstadoDAOImpl.class
+com\uisrael\proyecto_clases\modelo\DAOImpl\UsuarioDAOImpl.class
 com\requerimientos\requerimientospro\entidades\Usuario.class
 com\uisrael\proyecto_clases\backingBeans\PrincipalView.class
 com\uisrael\proyecto_clases\modelo\DAOImpl\CiudadDAOImpl.class
@@ -34,6 +36,8 @@ com\requerimientos\requerimientospro\entidades\Requerimiento_.class
 com\uisrael\proyecto_clases\controlador\controladorImpl\EstadoControlerImpl.class
 com\uisrael\proyecto_clases\backingBeans\RequerimientoView.class
 com\uisrael\proyecto_clases\modelo\DAOImpl\GenericDAOImpl.class
+com\uisrael\proyecto_clases\controlador\controlador\IUsuarioControlador.class
+com\uisrael\proyecto_clases\modelo\DAO\IUsuarioDAO.class
 com\uisrael\proyecto_clases\backingBeans\ClienteView.class
 com\uisrael\proyecto_clases\modelo\DAOImpl\OrdenDAOImpl.class
 com\requerimientos\requerimientospro\entidades\Orden.class

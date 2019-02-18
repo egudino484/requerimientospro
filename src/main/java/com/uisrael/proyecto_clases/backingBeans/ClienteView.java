@@ -9,6 +9,7 @@ import com.requerimientos.requerimientospro.entidades.Cliente;
 import com.requerimientos.requerimientospro.entidades.Orden;
 import com.requerimientos.requerimientospro.entidades.Usuario;
 import com.uisrael.proyecto_clases.controlador.controladorImpl.ClienteControlerImpl;
+import com.uisrael.proyecto_clases.controlador.controladorImpl.UsuarioControlerImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -28,9 +29,18 @@ public class ClienteView implements Serializable {
 
     private Long txtidCliente;
     private Long txtidUsuario;
+    List<Usuario> listaUsuarios;
 
     public Long getTxtidUsuario() {
         return txtidUsuario;
+    }
+
+    public List<Usuario> getListaUsuarios() {
+        return listaUsuarios;
+    }
+
+    public void setListaUsuarios(List<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
     }
 
     public void setTxtidUsuario(Long txtidUsuario) {
@@ -62,6 +72,8 @@ public class ClienteView implements Serializable {
     private Long txtUsuario;
     private int txtEstado;
     private ClienteControlerImpl controlador;
+    private UsuarioControlerImpl controladorUsuario;
+
     private Cliente objeto;
     private Cliente objetoSeleccionado;
 
@@ -98,6 +110,19 @@ public class ClienteView implements Serializable {
         objeto = new Cliente();
         objetoSeleccionado = new Cliente();
         controlador = new ClienteControlerImpl();
+        controladorUsuario = new UsuarioControlerImpl();
+        listaUsuarios = new ArrayList<>();
+        cargarListas();
+
+    }
+
+    //cargar lista de usuarios , ordenes
+    public void cargarListas() {
+        try {
+            listaUsuarios = controladorUsuario.findAll();
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
     }
 
     public void insertarCiente() {
