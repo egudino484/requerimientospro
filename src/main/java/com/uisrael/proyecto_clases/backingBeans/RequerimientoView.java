@@ -58,6 +58,17 @@ public class RequerimientoView implements Serializable {
         objeto = new Requerimiento();
         controller = new RequerimientoControlerImpl();
     }
+    
+    public List<Requerimiento> list(){
+
+        try {
+            return controller.findAll();
+        } catch (Exception ex) {
+            Logger.getLogger(RequerimientoView.class.getName()).log(Level.SEVERE, null, ex);
+            return new ArrayList<>();
+        }
+
+    }
 
     public void insertar() {
         objeto.setId(-1l);
