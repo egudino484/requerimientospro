@@ -52,96 +52,50 @@ and open the template in the editor.
                     <p:commandButton value="Guardar" action="#{requerimientoView.insertar()}" ></p:commandButton>
 
                 </p:panel>
-                <!--                <p:panel header="listar" style="">
-                
-                                    <h:panelGrid>
-                                        <p:dataTable id="listaCliente" value="{clienteView.listarcliente()}"  var="dtCliente" widgetVar="listaCliente" rows="25" paginatorPosition="bottom" paginator="true" scrollable="true" scrollHeight="200">
-                                            <p:column headerText="Id">
-                                                <h:outputText id="txtid" value="{dtCliente.idCliente}" />
-                                            </p:column>
-                
-                                            <p:column headerText="Nombre">
-                                                <h:outputText id="txtNombre" value="{dtCliente.nombre}" />
-                                            </p:column>
-                
-                                            <p:column headerText="Apellido">
-                                                <h:outputText id="txtApellido" value="dtCliente.apellido}" />
-                                            </p:column>
-                
-                                            <p:column headerText="Dirección">
-                                                <h:outputText id="txtDireccion" value="{dtCliente.direccion}" />
-                                            </p:column>      
-                
-                                            <p:column headerText="Telefono">
-                                                <h:outputText id="txtFono" value="{dtCliente.telefono}" />
-                                            </p:column> 
-                
-                                            <p:column headerText="Cedula">
-                                                <h:outputText id="txtCi" value="{dtCliente.ci}" />
-                                            </p:column> 
-                                            <p:column headerText="eliminar">
-                                                <p:commandButton value="Eliminar" action="{clienteView.eliminarCliente(dtCliente.idCliente)}" ></p:commandButton>                            
-                                            </p:column> 
-                                            <p:column style="width:32px">  
-                                                <p:commandButton update=":dlgForm"   action="{clienteView.seleccionarCliente(dtCliente.idCliente)}" onclick="dlgForm.show()" oncomplete="dlgForm.show()"  immediate="true" 
-                                                                 image="ui-icon ui-icon-search" >  
-                                                    <f:setPropertyActionListener value="{dtCliente}"  
-                                                                                 target="{clienteView.clienteSeleccionado}" /> 
-                                                </p:commandButton>  
-                                            </p:column>  
-                
-                                        </p:dataTable> 
-                
-                                    </h:panelGrid>
-                
-                
-                
-                
-                
-                                </p:panel>-->
 
 
+
+
+                <hr/>
+                <p:commandButton value="RECARGAR" onclick="location.reload();" ></p:commandButton>
+                <p:panel header="listar" style="">
+
+                    <h:panelGrid>
+                        <p:dataTable id="listaCliente" value="#{requerimientoView.list()}"  var="dtCliente" widgetVar="listaCliente" rows="25" paginatorPosition="bottom" paginator="true" scrollable="true" scrollHeight="200">
+                            <p:column headerText="Id">
+                                <h:outputText id="idrequerimiento" value="#{dtCliente.id}" />
+                            </p:column>
+
+                            <p:column headerText="observaciones">
+                                <h:outputText id="observaciones" value="#{dtCliente.observaciones}" />
+                            </p:column>
+
+                            <p:column headerText="fechaAsignacion">
+                                <h:outputText id="feachaasignacion" value="#{dtCliente.fechaAsignacion}" />
+                            </p:column>
+
+                            <p:column headerText="fechaVisita">
+                                <h:outputText id="fechaVisita" value="#{dtCliente.fechaVisita}" />
+                            </p:column>      
+                            <p:column headerText="telefonoContacto">
+                                <h:outputText id="telefonoContacto" value="#{dtCliente.telefonoContacto}" />
+                            </p:column> 
+                            <p:column headerText="Cliente">
+                                <h:outputText id="clientename" value="#{dtCliente.cliente.name}" />
+                            </p:column> 
+                            <p:column headerText="Ciudad">
+                                <h:outputText id="ciudad" value="#{dtCliente.ciudad.descripcion}" />
+                            </p:column> 
+                        </p:dataTable> 
+
+                    </h:panelGrid>
+
+
+
+
+
+                </p:panel>
             </h:form>
-            <hr/>
-            <p:commandButton value="RECARGAR" onclick="location.reload();" ></p:commandButton>
-            <p:panel header="listar" style="">
-
-                <h:panelGrid>
-                    <p:dataTable id="listaCliente" value="#{requerimientoView.list()}"  var="dtCliente" widgetVar="listaCliente" rows="25" paginatorPosition="bottom" paginator="true" scrollable="true" scrollHeight="200">
-                        <p:column headerText="Id">
-                            <h:outputText id="idrequerimiento" value="#{dtCliente.id}" />
-                        </p:column>
-
-                        <p:column headerText="observaciones">
-                            <h:outputText id="observaciones" value="#{dtCliente.observaciones}" />
-                        </p:column>
-
-                        <p:column headerText="fechaAsignacion">
-                            <h:outputText id="feachaasignacion" value="#{dtCliente.fechaAsignacion}" />
-                        </p:column>
-
-                        <p:column headerText="fechaVisita">
-                            <h:outputText id="fechaVisita" value="#{dtCliente.fechaVisita}" />
-                        </p:column>      
-                        <p:column headerText="telefonoContacto">
-                            <h:outputText id="telefonoContacto" value="#{dtCliente.telefonoContacto}" />
-                        </p:column> 
-                        <p:column headerText="Cliente">
-                            <h:outputText id="clientename" value="#{dtCliente.cliente.name}" />
-                        </p:column> 
-                        <p:column headerText="Ciudad">
-                            <h:outputText id="ciudad" value="#{dtCliente.ciudad.descripcion}" />
-                        </p:column> 
-                    </p:dataTable> 
-
-                </h:panelGrid>
-
-
-
-
-
-            </p:panel>
-
         </div>
     </body>
 </html>
