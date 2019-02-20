@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  *
- * @author fernanda
+ * @author esanchez
  */
 public interface IRequerimientoDAO {
 
@@ -21,7 +21,7 @@ public interface IRequerimientoDAO {
 
     public List<Requerimiento> findAll();
 
-    public boolean eliminar(int code);
+    public boolean eliminar(Long code);
 
     public boolean actualizar(Requerimiento objeto);
 

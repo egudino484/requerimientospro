@@ -20,7 +20,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Eddy
+ * @author esanchez
  */
 @Named(value = "principalView")
 @Dependent
@@ -32,26 +32,29 @@ public class PrincipalView {
     public PrincipalView() {
     }
 
-   
-
-  
-
-    public static String conectar() {
+    public  void poblarBase() {
         EntityManagerFactory objFactory = Persistence.createEntityManagerFactory("com.requerimientos_requerimientospro_war_1.0-SNAPSHOTPU2");
         EntityManager em = objFactory.createEntityManager();
         em.getTransaction().begin();
         //crear ESTADOS -------------
         Estado estado = new Estado();
-        //  classtypeItem.setId(1l);
+        estado.setId(1l);
         estado.setDescripcion("activo");
         em.persist(estado);
         em.getTransaction().commit();//commit
+
+        Estado estado1 = new Estado();
+        estado.setId(2l);
+        estado.setDescripcion("inactivo");
+        em.persist(estado1);
+        em.getTransaction().commit();//commit
+
         System.out.println("Despues de crear estados");
         System.out.println("ENTIDAD: " + estado.toString());
 
         //crear ORDENES-------------
         Orden orden = new Orden();
-        //  classtypeItem.setId(1l);
+        orden.setId(1l);
         orden.setDescripcion("Orden de compra macbook pro");
         em.getTransaction().begin();
         em.persist(orden);
@@ -61,14 +64,14 @@ public class PrincipalView {
 
         //crear CIUDADES-------------
         Ciudad ciudad = new Ciudad();
-        //  classtypeItem.setId(1l);
+        ciudad.setId(1l);
         ciudad.setDescripcion("Quito");
         em.getTransaction().begin();
         em.persist(ciudad);
         em.getTransaction().commit();//commit
 
         Ciudad ciudad1 = new Ciudad();
-        //  classtypeItem.setId(1l);
+        ciudad1.setId(2l);
         ciudad1.setDescripcion("Guayaquil");
         em.getTransaction().begin();
         em.persist(ciudad1);
@@ -115,8 +118,9 @@ public class PrincipalView {
         System.out.println("Cerrando Entity Manager");
 
         em.close();
-       // objFactory.close();
-        return "succes: " + estado.toString();
+        // objFactory.close();
+        System.out.println("succes: " + estado.toString());
 
     }
+
 }

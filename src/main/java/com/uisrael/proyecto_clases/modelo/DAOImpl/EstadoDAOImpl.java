@@ -20,7 +20,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author
+ * @author esanchez
  */
 public class EstadoDAOImpl extends GenericDAOImpl<Estado> implements IEstadoDAO {
 
@@ -58,7 +58,7 @@ public class EstadoDAOImpl extends GenericDAOImpl<Estado> implements IEstadoDAO 
     public boolean eliminar(int code) {
         System.out.println("DAO" + code);
         this.beginTransaction();
-        Estado objEliminar = entityManager.find(Estado.class, code);
+        Estado objEliminar = entityManager.find(Estado.class, new Long(code));
         this.delete(objEliminar);
         this.commit();
         this.closeTransaction();

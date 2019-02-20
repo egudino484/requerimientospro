@@ -16,8 +16,7 @@ import javax.transaction.Transactional;
 
 /**
  *
- * @author fernanda
- * @param <T>
+ * @author esanchez
  */
 public class GenericDAOImpl<T> implements IGenericDAO<T> {
 

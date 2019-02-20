@@ -11,9 +11,12 @@ import com.requerimientos.requerimientospro.entidades.Estado;
 import com.requerimientos.requerimientospro.entidades.Orden;
 import com.requerimientos.requerimientospro.entidades.Requerimiento;
 import com.requerimientos.requerimientospro.entidades.Usuario;
+import com.uisrael.proyecto_clases.controlador.controladorImpl.CiudadControlerImpl;
 import com.uisrael.proyecto_clases.controlador.controladorImpl.ClienteControlerImpl;
+import com.uisrael.proyecto_clases.controlador.controladorImpl.EstadoControlerImpl;
 import com.uisrael.proyecto_clases.controlador.controladorImpl.OrdenControlerImpl;
 import com.uisrael.proyecto_clases.controlador.controladorImpl.RequerimientoControlerImpl;
+import com.uisrael.proyecto_clases.controlador.controladorImpl.UsuarioControlerImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Date;
@@ -28,13 +31,12 @@ import javax.persistence.ManyToOne;
 
 /**
  *
- * @author fernanda
+ * @author esanchez
  */
 @ManagedBean
 @ViewScoped
 public class RequerimientoView implements Serializable {
 
-   
     private Long id;
 
     private Date fechaAsignacion;
@@ -50,8 +52,19 @@ public class RequerimientoView implements Serializable {
 
     private Ciudad ciudad;
 
-    private RequerimientoControlerImpl controller;
-    private Requerimiento objeto;
+    private RequerimientoControlerImpl controlador;
+    private Requerimiento objeto, objetoSeleccionado;
+    private List<Usuario> listaUsuarios;
+    private List<Ciudad> listaCiudades;
+    private List<Estado> listaEstados;
+    private List<Orden> listaOrdenes;
+    private List<Cliente> listaClientes;
+
+    private UsuarioControlerImpl controladorUsuario;
+    private CiudadControlerImpl controladorCiudad;
+    private EstadoControlerImpl controladorEstado;
+    private OrdenControlerImpl controladorOrden;
+    private ClienteControlerImpl controladorCliente;
 
     public RequerimientoView() {
 
@@ -60,18 +73,43 @@ public class RequerimientoView implements Serializable {
     @PostConstruct
     public void init() {
         objeto = new Requerimiento();
-        controller = new RequerimientoControlerImpl();
-        ciudad=new Ciudad();
-        orden=new Orden();
-        estado=new Estado();
-        cliente=new Cliente();
-        usuario=new Usuario();
+        objetoSeleccionado = new Requerimiento();
+        controlador = new RequerimientoControlerImpl();
+        ciudad = new Ciudad();
+        orden = new Orden();
+        estado = new Estado();
+        cliente = new Cliente();
+        usuario = new Usuario();
+        //
+        fechaAsignacion = new Date();
+        fechaVisita = new Date();
+        listaUsuarios = new ArrayList<>();
+        controladorUsuario = new UsuarioControlerImpl();
+        controladorCiudad = new CiudadControlerImpl();
+        controladorEstado = new EstadoControlerImpl();
+        controladorOrden = new OrdenControlerImpl();
+        controladorCliente = new ClienteControlerImpl();
+        cargarListas();
     }
-    
-    public List<Requerimiento> list(){
+
+    //cargar lista de usuarios , ordenes
+    public void cargarListas() {
+        try {
+            listaUsuarios = controladorUsuario.findAll();
+            listaCiudades = controladorCiudad.findAll();
+            listaEstados = controladorEstado.findAll();
+            listaOrdenes = controladorOrden.findAll();
+            listaClientes = controladorCliente.findAll();
+
+        } catch (Exception ex) {
+            Logger.getLogger(ClienteView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public List<Requerimiento> list() {
 
         try {
-            return controller.findAll();
+            return controlador.findAll();
         } catch (Exception ex) {
             Logger.getLogger(RequerimientoView.class.getName()).log(Level.SEVERE, null, ex);
             return new ArrayList<>();
@@ -92,50 +130,51 @@ public class RequerimientoView implements Serializable {
         objeto.setCiudad(ciudad);
 
         try {
-            controller.insert(objeto);
+            controlador.insert(objeto);
             System.out.println("Sus datos fueron ingresados");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
-    
+
     public void actualizar() {
-        objeto.setId(-1l);
-        objeto.setFechaAsignacion(new Date());
-        objeto.setFechaVisita(new Date());
-        objeto.setObservaciones(observaciones);
-        objeto.setTelefonoContacto(telefonoContacto);
-        objeto.setCliente(cliente);
-        objeto.setUsuario(usuario);
-        objeto.setEstado(estado);
-        objeto.setOrden(orden);
-        objeto.setCiudad(ciudad);
+        
 
         try {
-            controller.insert(objeto);
-            System.out.println("Sus datos fueron ingresados");
+            controlador.update(objetoSeleccionado);
+            System.out.println("Sus datos fueron modiificados");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
     }
-    public void eliminar() {
-        objeto.setId(-1l);
-        objeto.setFechaAsignacion(new Date());
-        objeto.setFechaVisita(new Date());
-        objeto.setObservaciones(observaciones);
-        objeto.setTelefonoContacto(telefonoContacto);
-        objeto.setCliente(cliente);
-        objeto.setUsuario(usuario);
-        objeto.setEstado(estado);
-        objeto.setOrden(orden);
-        objeto.setCiudad(ciudad);
+
+    public void eliminar(Long code) {
+      
 
         try {
-            controller.insert(objeto);
-            System.out.println("Sus datos fueron ingresados");
+            controlador.delete(code);
+            System.out.println("Se elimino");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
         }
+    }
+
+    public void seleccionar(Long code) {
+        try {
+            System.out.println("id seleccionado:" + code);
+            objetoSeleccionado = controlador.findByid(code.intValue()).get(0);
+            System.err.println("termino de convertir: " + objetoSeleccionado);
+        } catch (Exception ex) {
+            Logger.getLogger(OrdenView.class.getName()).log(Level.SEVERE, null, ex);
+        }
+    }
+
+    public Requerimiento getObjetoSeleccionado() {
+        return objetoSeleccionado;
+    }
+
+    public void setObjetoSeleccionado(Requerimiento objetoSeleccionado) {
+        this.objetoSeleccionado = objetoSeleccionado;
     }
 
     public Long getId() {
@@ -224,6 +263,46 @@ public class RequerimientoView implements Serializable {
 
     public void setObjeto(Requerimiento objeto) {
         this.objeto = objeto;
+    }
+
+    public List<Usuario> getListaUsuarios() {
+        return listaUsuarios;
+    }
+
+    public void setListaUsuarios(List<Usuario> listaUsuarios) {
+        this.listaUsuarios = listaUsuarios;
+    }
+
+    public List<Ciudad> getListaCiudades() {
+        return listaCiudades;
+    }
+
+    public void setListaCiudades(List<Ciudad> listaCiudades) {
+        this.listaCiudades = listaCiudades;
+    }
+
+    public List<Estado> getListaEstados() {
+        return listaEstados;
+    }
+
+    public void setListaEstados(List<Estado> listaEstados) {
+        this.listaEstados = listaEstados;
+    }
+
+    public List<Orden> getListaOrdenes() {
+        return listaOrdenes;
+    }
+
+    public void setListaOrdenes(List<Orden> listaOrdenes) {
+        this.listaOrdenes = listaOrdenes;
+    }
+
+    public List<Cliente> getListaClientes() {
+        return listaClientes;
+    }
+
+    public void setListaClientes(List<Cliente> listaClientes) {
+        this.listaClientes = listaClientes;
     }
 
 }

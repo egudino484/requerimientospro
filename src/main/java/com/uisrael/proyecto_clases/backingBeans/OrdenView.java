@@ -20,7 +20,7 @@ import javax.faces.bean.ViewScoped;
 
 /**
  *
- * @author fernanda
+ * @author esanchez
  */
 @ManagedBean
 @ViewScoped

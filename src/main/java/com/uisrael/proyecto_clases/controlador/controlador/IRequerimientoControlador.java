@@ -12,7 +12,7 @@ import java.util.List;
 
 /**
  *
- * @author fernanda
+ * @author esanchez
  */
 public interface IRequerimientoControlador {
 
@@ -22,7 +22,7 @@ public interface IRequerimientoControlador {
 
     public List<Requerimiento> findAll() throws Exception;
 
-    public boolean delete(int code) throws Exception;
+    public boolean delete(Long code) throws Exception;
 
     public boolean update(Requerimiento objeto) throws Exception;
 
