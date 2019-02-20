@@ -77,7 +77,7 @@ public class ClienteDAOImpl extends GenericDAOImpl<Cliente> implements IClienteD
     public boolean eliminar(int code) {
         System.out.println("DAO" + code);
         this.beginTransaction();
-        Cliente objEliminar = entityManager.find(Cliente.class, code);
+        Cliente objEliminar = entityManager.find(Cliente.class, new Long(code));
         this.delete(objEliminar);
         this.commit();
         this.closeTransaction();

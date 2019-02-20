@@ -32,7 +32,7 @@ public class RequerimientoDAOImpl extends GenericDAOImpl<Requerimiento> implemen
 
 
     @Override
-    public boolean eliminar(int code) {
+    public boolean eliminar(Long code) {
         System.out.println("DAO" + code);
         this.beginTransaction();
         Requerimiento objEliminar = entityManager.find(Requerimiento.class, code);

@@ -60,7 +60,7 @@ public class RequerimientoControlerImpl implements IRequerimientoControlador {
     }
 
     @Override
-    public boolean delete(int code) throws Exception {
+    public boolean delete(Long code) throws Exception {
         try {
             IRequerimientoDAO sqlc = new RequerimientoDAOImpl(Requerimiento.class);
             return sqlc.eliminar(code);

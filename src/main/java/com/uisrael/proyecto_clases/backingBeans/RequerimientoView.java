@@ -152,7 +152,7 @@ public class RequerimientoView implements Serializable {
       
 
         try {
-            controlador.delete(code.intValue());
+            controlador.delete(code);
             System.out.println("Se elimino");
         } catch (Exception e) {
             System.out.println("Error: " + e.getMessage());
