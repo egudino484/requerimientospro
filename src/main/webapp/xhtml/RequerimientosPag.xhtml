@@ -89,22 +89,22 @@ and open the template in the editor.
                                 <h:outputText id="idrequerimiento" value="#{dtCliente.id}" />
                             </p:column>
 
-                            <p:column headerText="observaciones">
+                            <p:column headerText="Observaciones">
                                 <h:outputText id="observaciones" value="#{dtCliente.observaciones}" />
                             </p:column>
 
-                            <p:column headerText="fechaAsignacion">
+                            <p:column headerText="Fecha Asignacion">
                                 <h:outputText id="feachaasignacion" value="#{dtCliente.fechaAsignacion}" >
                                     <f:convertDateTime pattern="dd/MM/yyyy"  />
                                 </h:outputText>
                             </p:column>
 
-                            <p:column headerText="fechaVisita">
+                            <p:column headerText="Fecha Visita">
                                 <h:outputText id="fechaVisita" value="#{dtCliente.fechaVisita}" >
                                     <f:convertDateTime pattern="dd/MM/yyyy"  />
                                 </h:outputText>
                             </p:column>      
-                            <p:column headerText="telefonoContacto">
+                            <p:column headerText="Telefono Contacto">
                                 <h:outputText id="telefonoContacto" value="#{dtCliente.telefonoContacto}" />
                             </p:column> 
                             <p:column headerText="Cliente">
@@ -112,6 +112,9 @@ and open the template in the editor.
                             </p:column> 
                             <p:column headerText="Ciudad">
                                 <h:outputText id="ciudad" value="#{dtCliente.ciudad.descripcion}" />
+                            </p:column> 
+                             <p:column headerText="Estado">
+                                 <h:outputText id="estado" value="#{dtCliente.estado.descripcion}" />
                             </p:column> 
                             <p:column headerText="eliminar">
                                 <p:commandButton update=":frmCliente" value="Eliminar" action="#{requerimientoView.eliminar(dtCliente.id)}" ></p:commandButton>                            
