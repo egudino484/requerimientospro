@@ -20,7 +20,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author Eddy
+ * @author esanchez
  */
 @Named(value = "principalView")
 @Dependent

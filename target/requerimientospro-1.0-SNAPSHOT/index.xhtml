@@ -4,24 +4,19 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
         <title>Facelet Title</title>
-        <h:outputStylesheet name="css/jsfcrud.css"/>
+        <h:outputStylesheet library="css" name="menu.css"  />  
     </h:head>
+
     <h:body>
-        Hello from Facelets<br></br>
-        nombre:#{clienteManagedBean.nombre()}     
-        resultado: #{clienteManagedBean.ejecutardb()}
-        <br />
-        <h:link outcome="/cliente/List" value="Show All Cliente Items"/>
-        <br />
-        <h:link outcome="/orden/List" value="Show All Orden Items"/>
-        <br />
-        <h:link outcome="/usuario/List" value="Show All Usuario Items"/>
-        <br></br>
-        <h:link outcome="/xhtml/Ordenes" value="Mostrar Ordenes"/>
-        <br></br>
-        <h:link outcome="/xhtml/Requerimientos" value="Mostrar Requerimientos"/>
-        <br></br>
-        <h:link outcome="/xhtml/Clientes" value="Mostrar Clientes"/>
+        <nav>
+            <ul>
+                <li> <h:link outcome="/xhtml/Ordenes" value="Mostrar Ordenes"/></li>
+                <li> <h:link outcome="/xhtml/RequerimientosPag" value="Mostrar Requerimientos"/></li>
+                <li> <h:link outcome="/xhtml/Clientes" value="Mostrar Clientes"/></li>
+                <li><h:link outcome="/xhtml/Usuarios" value="Mostrar Usuarios"/></li>
+            </ul>
+
+        </nav>
 
     </h:body>
 

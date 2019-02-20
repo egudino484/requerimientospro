@@ -20,7 +20,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author
+ * @author esanchez
  */
 public class EstadoDAOImpl extends GenericDAOImpl<Estado> implements IEstadoDAO {
 

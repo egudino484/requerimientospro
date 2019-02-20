@@ -9,8 +9,7 @@ import java.util.List;
 
 /**
  *
- * @author fernanda
- * @param <T>
+ * @author esanchez
  */
 public interface IGenericDAO<T> {
 

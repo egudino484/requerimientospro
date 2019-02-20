@@ -13,8 +13,18 @@ and open the template in the editor.
 
     <h:head>
         <title>Ordenes</title>
+        <h:outputStylesheet library="css" name="menu.css"  />  
     </h:head>
     <body>
+        <nav>
+            <ul>
+                <li> <h:link outcome="/xhtml/Ordenes" value="Mostrar Ordenes"/></li>
+                <li> <h:link outcome="/xhtml/RequerimientosPag" value="Mostrar Requerimientos"/></li>
+                <li> <h:link outcome="/xhtml/Clientes" value="Mostrar Clientes"/></li>
+                <li><h:link outcome="/xhtml/Usuarios" value="Mostrar Usuarios"/></li>
+            </ul>
+
+        </nav>
         <h1>ORDENES</h1>
         <div>
             <h:form id="frmCliente" style="background-color:aqua ">
@@ -26,7 +36,7 @@ and open the template in the editor.
                         <p:inputText value="#{ordenView.txtDescripcion}">  </p:inputText>
 
                     </h:panelGrid>
-                    <p:commandButton value="Guardar" action="#{ordenView.insertar()}" ></p:commandButton>
+                    <p:commandButton update=":frmCliente" value="Guardar" action="#{ordenView.insertar()}" ></p:commandButton>
 
                 </p:panel>
                 <p:commandButton value="RECARGAR" onclick="location.reload();" ></p:commandButton>
@@ -43,7 +53,7 @@ and open the template in the editor.
                             </p:column>
 
                             <p:column headerText="eliminar">
-                                <p:commandButton value="Eliminar" action="#{ordenView.eliminar(dtCliente.id)}" ></p:commandButton>                            
+                                <p:commandButton update=":frmCliente" value="Eliminar" action="#{ordenView.eliminar(dtCliente.id)}" ></p:commandButton>                            
                             </p:column> 
                             <p:column style="width:32px">  
                                 <p:commandButton update=":dlgForm"   action="#{ordenView.seleccionar(dtCliente.id)}" onclick="dlgForm.show()" oncomplete="dlgForm.show()"  immediate="true" 
@@ -86,7 +96,7 @@ and open the template in the editor.
 
                 <!--update="tableForm:carTable"--> 
 
-                <p:commandButton value="GUARDAR" action="#{ordenView.actualizar()}" >
+                <p:commandButton  update=":frmCliente" value="GUARDAR" action="#{ordenView.actualizar()}" >
                     <f:ajax render=":frmCliente:listaCliente"/>
                 </p:commandButton>
 

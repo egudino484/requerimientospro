@@ -18,7 +18,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author
+ * @author esanchez
  */
 public class CiudadDAOImpl extends GenericDAOImpl<Ciudad> implements ICiudadDAO {
 

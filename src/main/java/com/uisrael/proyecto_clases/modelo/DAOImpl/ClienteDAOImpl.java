@@ -16,7 +16,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author
+ * @author esanchez
  */
 public class ClienteDAOImpl extends GenericDAOImpl<Cliente> implements IClienteDAO {
 

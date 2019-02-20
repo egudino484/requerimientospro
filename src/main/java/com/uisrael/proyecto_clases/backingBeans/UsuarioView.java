@@ -7,8 +7,10 @@ package com.uisrael.proyecto_clases.backingBeans;
 
 import com.requerimientos.requerimientospro.entidades.Cliente;
 import com.requerimientos.requerimientospro.entidades.Orden;
+import com.requerimientos.requerimientospro.entidades.Usuario;
 import com.uisrael.proyecto_clases.controlador.controladorImpl.ClienteControlerImpl;
 import com.uisrael.proyecto_clases.controlador.controladorImpl.OrdenControlerImpl;
+import com.uisrael.proyecto_clases.controlador.controladorImpl.UsuarioControlerImpl;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -24,31 +26,29 @@ import javax.faces.bean.ViewScoped;
  */
 @ManagedBean
 @ViewScoped
-public class OrdenView implements Serializable {
+public class UsuarioView implements Serializable {
 
-    private String txtidOrden;
-    private String txtDescripcion;
+   
 
-    private OrdenControlerImpl controlador;
-    private Orden objeto;
-    private Orden objetoSeleccionado;
+    private UsuarioControlerImpl controlador;
+    private Usuario objeto;
+    private Usuario objetoSeleccionado;
 
-    public OrdenView() {
+    public UsuarioView() {
 
     }
 
     @PostConstruct
     public void init() {
-        objeto = new Orden();
-        objetoSeleccionado = new Orden();
-
-        controlador = new OrdenControlerImpl();
+        objeto = new Usuario();
+        objetoSeleccionado = new Usuario();
+        controlador = new UsuarioControlerImpl();
     }
 
     public void insertar() {
         objeto.setId(-1l);
 
-        objeto.setDescripcion(txtDescripcion);
+       
 
         try {
             controlador.insert(objeto);
@@ -78,10 +78,9 @@ public class OrdenView implements Serializable {
         }
     }
 
-    public List<Orden> listar() {
-        objeto.setId(-1l);
+    public List<Usuario> listar() {
 
-        objeto.setDescripcion(txtDescripcion);
+       
 
         try {
 
@@ -99,56 +98,26 @@ public class OrdenView implements Serializable {
             objetoSeleccionado = controlador.findByid(code.intValue()).get(0);
             System.err.println("termino de convertir: " + objetoSeleccionado);
         } catch (Exception ex) {
-            Logger.getLogger(OrdenView.class.getName()).log(Level.SEVERE, null, ex);
+            Logger.getLogger(UsuarioView.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
 
-    public String getTxtidOrden() {
-        return txtidOrden;
-    }
-
-    public void setTxtidOrden(String txtidOrden) {
-        this.txtidOrden = txtidOrden;
-    }
-
-    public String getTxtDescripcion() {
-        return txtDescripcion;
-    }
-
-    public void setTxtDescripcion(String txtDescripcion) {
-        this.txtDescripcion = txtDescripcion;
-    }
-
-    public OrdenControlerImpl getClientecontroler() {
-        return controlador;
-    }
-
-    public void setClientecontroler(OrdenControlerImpl clientecontroler) {
-        this.controlador = clientecontroler;
-    }
-
-    public Orden getCliente() {
+    public Usuario getObjeto() {
         return objeto;
     }
 
-    public void setCliente(Orden cliente) {
-        this.objeto = cliente;
-    }
-
-    public Orden getObjeto() {
-        return objeto;
-    }
-
-    public void setObjeto(Orden objeto) {
+    public void setObjeto(Usuario objeto) {
         this.objeto = objeto;
     }
 
-    public Orden getObjetoSeleccionado() {
+    public Usuario getObjetoSeleccionado() {
         return objetoSeleccionado;
     }
 
-    public void setObjetoSeleccionado(Orden objetoSeleccionado) {
+    public void setObjetoSeleccionado(Usuario objetoSeleccionado) {
         this.objetoSeleccionado = objetoSeleccionado;
     }
+
+   
 
 }

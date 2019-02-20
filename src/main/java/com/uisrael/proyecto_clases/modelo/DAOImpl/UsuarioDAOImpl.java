@@ -18,7 +18,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author
+ * @author esanchez
  */
 public class UsuarioDAOImpl extends GenericDAOImpl<Usuario> implements IUsuarioDAO {
 

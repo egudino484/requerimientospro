@@ -22,7 +22,7 @@ import java.util.List;
 
 /**
  *
- * @author 
+ * @author esanchez
  */
 public class RequerimientoControlerImpl implements IRequerimientoControlador {
 

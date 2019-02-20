@@ -19,7 +19,7 @@ import javax.persistence.Persistence;
 
 /**
  *
- * @author
+ * @author esanchez
  */
 public class RequerimientoDAOImpl extends GenericDAOImpl<Requerimiento> implements IRequerimientoDAO {
 
@@ -30,14 +30,7 @@ public class RequerimientoDAOImpl extends GenericDAOImpl<Requerimiento> implemen
         super(entityClass);
     }
 
-    /*public void insertCliente(Cliente cliente) {
-        System.out.println("DAO"+cliente.toString());
-        this.beginTransaction();
-        this.create(cliente);
-        this.commit();
-        this.closeTransaction();
-        
-    }*/
+
     @Override
     public boolean eliminar(int code) {
         System.out.println("DAO" + code);
@@ -51,7 +44,7 @@ public class RequerimientoDAOImpl extends GenericDAOImpl<Requerimiento> implemen
 
     @Override
     public boolean actualizar(Requerimiento objeto) {
-        System.out.println("DAO" + objeto.toString());
+        System.out.println("DAO: " + objeto.toString());
         this.beginTransaction();
         //update object with entity manager 
         this.update(objeto);
