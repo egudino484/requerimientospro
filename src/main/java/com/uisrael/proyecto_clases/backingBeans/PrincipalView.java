@@ -32,7 +32,7 @@ public class PrincipalView {
     public PrincipalView() {
     }
 
-    public static String poblarBase() {
+    public  void poblarBase() {
         EntityManagerFactory objFactory = Persistence.createEntityManagerFactory("com.requerimientos_requerimientospro_war_1.0-SNAPSHOTPU2");
         EntityManager em = objFactory.createEntityManager();
         em.getTransaction().begin();
@@ -119,7 +119,7 @@ public class PrincipalView {
 
         em.close();
         // objFactory.close();
-        return "succes: " + estado.toString();
+        System.out.println("succes: " + estado.toString());
 
     }
 
